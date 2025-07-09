@@ -24,13 +24,13 @@ app.use("/images", express.static(path.join(__dirname, 'assets')))
 app.use(cors());
 app.use(express.json());
 
-
-app.use('/.netlify/functions/api', userroute);
-app.use('/.netlify/functions/api', employeeroute);
-app.use('/.netlify/functions/api', productroute);
-app.use('/.netlify/functions/api', categoryroute);
-app.use('/.netlify/functions/api', orderroute);
-app.use('/.netlify/functions/api', cartroute);
+//app.use('/api', userroute);
+app.use('/', userroute);
+app.use('/', employeeroute);
+app.use('/', productroute);
+app.use('/', categoryroute);
+app.use('/', orderroute);
+app.use('/', cartroute);
 // const startServer = async () => {
 //   await conn();
 //   // app.listen(port, () => {
