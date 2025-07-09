@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const serverless = require('serverless-http');
 const bodyParser = require("body-parser");
 const path = require('path')
 const conn = require('./utility/connectdb')
@@ -26,9 +27,11 @@ app.use('/api', orderroute);
 app.use('/api', cartroute);
 const startServer = async () => {
   await conn();
-  app.listen(port, () => {
-    console.log(`server is running on port no ${port}`);
-  })
+  // app.listen(port, () => {
+  //   console.log(`server is running on port no ${port}`);
+  // })
+  module.exports.handler = serverless(app);
+
 }
 
 startServer();
