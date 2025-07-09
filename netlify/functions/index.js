@@ -13,7 +13,7 @@ const orderroute = require('../../routes/order_route')
 const cartroute = require('../../routes/cart_route')
 const app = express();
 
-conn();
+conn();  
 app.get('/', (req, res) => {
     res.send('Backend is running');
 });
