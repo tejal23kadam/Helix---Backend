@@ -1,12 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userModel = mongoose.model('user')
+//const userModel = mongoose.model('user')
+const userModel = require('../models/user_model'); // Adjust the path if needed
+
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const path = require('path');
 const { JWT_SECRET } = require('../utility/config');
 const { sendmail } = require('../utility/nodemailer');
 const uploadToCloudinary = require('../utility/uploadCloudinary')
+
+
 const checkConn = (req, res) => {
     res.status(200).json({ message: 'connection done successfully' })
 }
