@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 //const userModel = mongoose.model('user')
-const userModel = require('../models/user_model'); // Adjust the path if needed
+const userModel = require('../models/user_model'); 
 
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')

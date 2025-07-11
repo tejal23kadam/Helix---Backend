@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose');
-const categoryModel = mongoose.model('category');
-
+//const categoryModel = mongoose.model('category');
+const categoryModel=require('../models/category_model')
 const checkConnCategory = (req, res) => {
     res.status(200).json({ message: 'product connection done successfully' })
 }

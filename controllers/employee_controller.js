@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const employeeModel = mongoose.model('employee');
+//const employeeModel = mongoose.model('employee');
+const employeeModel = require('../models/employee_model')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../utility/config')
