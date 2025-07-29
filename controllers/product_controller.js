@@ -58,7 +58,7 @@ const addProduct = async (req, res) => {
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'Internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'Internal server error', data: error } })
     }
 }
 
@@ -67,14 +67,14 @@ const getAllProduct = async (req, res) => {
         const getProduct = await productModel.find();
 
         if (!getProduct) {
-            return res.status(404).json({ staus: false, data: { message: "no product found" } })
+            return res.status(404).json({ status: false, data: { message: "no product found" } })
         }
 
-        return res.status(200).json({ staus: true, data: { message: "all product are fetched", data: getProduct } })
+        return res.status(200).json({ status: true, data: { message: "all product are fetched", data: getProduct } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: "internal server error", data: error } })
+        return res.status(501).json({ status: false, data: { message: "internal server error", data: error } })
 
     }
 }

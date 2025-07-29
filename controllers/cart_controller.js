@@ -56,13 +56,13 @@ const updateCart = async (req, res) => {
         const updateUser = await cartModel.findOneAndUpdate({ userId: UserId }, data, { new: true });
 
         if (!updateUser) {
-            return res.status(404).json({ staus: true, data: { message: "order id is not found" } })
+            return res.status(404).json({ status: true, data: { message: "order id is not found" } })
         }
         return res.status(200).json({ status: true, data: { message: 'order Updated successfully ', data: updateUser } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'internal server error', data: error } })
     }
 }
 

@@ -69,7 +69,7 @@ const addUser = async (req, res) => {
 
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'Internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'Internal server error', data: error } })
     }
 }
 
@@ -80,13 +80,13 @@ const updateUser = async (req, res) => {
         const updateUser = await userModel.findByIdAndUpdate(UserId, data, { new: true });
 
         if (!updateUser) {
-            return res.status(404).json({ staus: true, data: { message: "User id is not found" } })
+            return res.status(404).json({ status: true, data: { message: "User id is not found" } })
         }
         return res.status(200).json({ status: true, data: { message: 'User Updated successfully ', data: updateUser } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'internal server error', data: error } })
     }
 }
 
@@ -96,14 +96,14 @@ const getAllUser = async (req, res) => {
         const getUser = await userModel.find();
 
         if (!getUser) {
-            return res.status(404).json({ staus: false, data: { message: "no User found" } })
+            return res.status(404).json({ status: false, data: { message: "no User found" } })
         }
 
-        return res.status(200).json({ staus: true, data: { message: "all User fetched", data: getUser } })
+        return res.status(200).json({ status: true, data: { message: "all User fetched", data: getUser } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: "internal server error", data: error } })
+        return res.status(501).json({ status: false, data: { message: "internal server error", data: error } })
 
     }
 }
@@ -113,7 +113,7 @@ const deteleUser = async (req, res) => {
         const UserId = req.params.id;
 
         if (!UserId) {
-            return res.status(404).json({ staus: false, data: { message: "User id can not be null or empty" } })
+            return res.status(404).json({ status: false, data: { message: "User id can not be null or empty" } })
         }
         await userModel.findByIdAndDelete(UserId);
 
@@ -134,10 +134,10 @@ const validateUser = async (req, res) => {
         
         if (!User.email) {
 
-            return res.status(200).json({ staus: false, data: { message: "your id is not registered" } })
+            return res.status(200).json({ status: false, data: { message: "your id is not registered" } })
         }
         if (!data.password) {
-            return res.status(200).json({ staus: false, data: { message: "please enter password" } })
+            return res.status(200).json({ status: false, data: { message: "please enter password" } })
         }
         const passwordMatch = await bcrypt.compare(data.password, User.password)
 

@@ -35,7 +35,7 @@ const addEmployee = async (req, res) => {
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'Internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'Internal server error', data: error } })
     }
 }
 
@@ -47,13 +47,13 @@ const updateEmployee = async (req, res) => {
         const updateStudent = await employeeModel.findByIdAndUpdate(studentId, data, { new: true });
 
         if (!updateStudent) {
-            return res.status(404).json({ staus: true, data: { message: "student id is not found" } })
+            return res.status(404).json({ status: true, data: { message: "student id is not found" } })
         }
         return res.status(200).json({ status: true, data: { message: 'student Updated successfully ', data: updateStudent } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: 'internal server error', data: error } })
+        return res.status(501).json({ status: false, data: { message: 'internal server error', data: error } })
     }
 }
 
@@ -63,14 +63,14 @@ const getAllEmployee = async (req, res) => {
         const getStudent = await employeeModel.find();
 
         if (!getStudent) {
-            return res.status(404).json({ staus: false, data: { message: "no student found" } })
+            return res.status(404).json({ status: false, data: { message: "no student found" } })
         }
 
-        return res.status(200).json({ staus: true, data: { message: "all student fetched", data: getStudent } })
+        return res.status(200).json({ status: true, data: { message: "all student fetched", data: getStudent } })
     }
     catch (error) {
         console.error(error);
-        return res.status(501).json({ staus: false, data: { message: "internal server error", data: error } })
+        return res.status(501).json({ status: false, data: { message: "internal server error", data: error } })
 
     }
 }
@@ -80,7 +80,7 @@ const deteleEmployee = async (req, res) => {
         const studentId = req.params.id;
 
         if (!studentId) {
-            return res.status(404).json({ staus: false, data: { message: "student id can not be null or empty" } })
+            return res.status(404).json({ status: false, data: { message: "student id can not be null or empty" } })
         }
         await employeeModel.findByIdAndDelete(studentId);
 
@@ -99,10 +99,10 @@ const validatEmployee = async (req, res) => {
         const Student = await employeeModel.findOne({ email: data.email });
         console.log("student", Student);
         if (!Student.email) {
-            return res.status(200).json({ staus: false, data: { message: "your id is not registered" } })
+            return res.status(200).json({ status: false, data: { message: "your id is not registered" } })
         }
         if (!data.password) {
-            return res.status(200).json({ staus: false, data: { message: "please enter password" } })
+            return res.status(200).json({ status: false, data: { message: "please enter password" } })
         }
         const passwordMatch = await bcrypt.compare(data.password, Student.password)
 
